@@ -62,7 +62,7 @@ There are some test based in Unitest too
 ```bash
 $docker exec -it <container id> python manage.py test
 ```
-## Impelentation
+## Implementation
 Not quite happy on how the urls end points are distributed, still thinking could be much clearer.
 The uploading process as mentioned before needs new thinking with more time.
 Focus on development based on messages responses.
