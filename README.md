@@ -44,11 +44,38 @@ http://0.0.0.0:8000/proimage.com/
 As an User mainly you want to upload multiple files in a row, over, the endpoint http://0.0.0.0:8000/photos/file/
 Use Postman as shown to upload multiple files
 
+![image](https://user-images.githubusercontent.com/664965/114632793-b0925a00-9cbf-11eb-808c-dace36b894c2.png)
+
+Or view the photos already uploaded
+http://0.0.0.0:8000/photos/photos/
+Or view users
+http://0.0.0.0:8000/photos/users/
+
+As well as part of the django rest-auth you would be able to register, login, logout, generate Token,  as User.
+
+## How to test
+Pytest been installed, to be able to test.
+```bash
+$docker exec -it <container id> Pytest
+```
+There are some test based in Unitest too 
+```bash
+$docker exec -it <container id> python manage.py test
+```
+## Impelemtation
+Not quite happy on how the urls end points are distributed, still thinking could be much clearer.
+The uploading process as mentioned before needs new thinking with more time.
+Focus on development based on messages responses.
+Adding the filter and image processing capabilities to the app.
+Update mysql to postgres
+Microservizing with docker to communicate between apps, or maybe RabbitMQ to do async?
+Pytest all application
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+## Future
+Definitively a base platform to move deeper into microservices for future projects
+
