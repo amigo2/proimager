@@ -9,6 +9,8 @@ from django.test import Client
 client = APIClient()
 
 
+# Tested with unittest rest
+
 class AccountTests(APITestCase, URLPatternsTestCase):
     urlpatterns = [
         path('registration/', include('rest_auth.registration.urls')),
@@ -55,46 +57,3 @@ class AccountTests(APITestCase, URLPatternsTestCase):
 # from imager_rest.viewsets import PhotoUploadView
 
 
-# from . import urls
-
-# from rest_framework.test import APIRequestFactory
-
-
-# from rest_framework.test import APIClient
-
-# client = APIClient()
-# client.get('/photos/', {'photos': ''}, format='json')
-
-# PHOTOS_URL = reverse('photos')
-
-# class PhotosTest(APITestCase):
-#     def setUp(self):
-#         self.client = Client()
-#         self.user = User(username="testuser", email="testemail@test.com")
-#         self.user.is_staff = True
-#         self.user.set_password('secret')
-#         self.user.save()
-
-# factory = APIRequestFactory()
-# #user = User.objects.get(username='fer')
-# view = PhotoUploadView.as_view({'get': 'list'})
-
-# # Make an authenticated request to the view...
-# request = factory.get('/photos/photos/')
-# #force_authenticate(request, user=user)
-# response = view(request)
-
-
-# class RegistrationTestCase(APITestCase):
-
-    
-
-    # def test_registration(self):
-    #     data = {"username": "testcase", "email": "amigo@gmail.com"  ,"password1":"12345678P","password2":"12345678P"  }
-    #     response = self.client.post("registration/", data)
-    #     self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-    # def test_login(self):
-    #     data = {"username": "fer","password":"1818"  }
-    #     response = self.client.post("proimage/login/", data)
-    #     self.assertEqual(response.status_code, status.HTTP_201_CREATED)

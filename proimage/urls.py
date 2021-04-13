@@ -11,7 +11,7 @@ from imager_rest.viewsets import FileUploadViewSet
 from imager_rest.viewsets import PhotoUploadView
 
 
-
+# Routing betwen apps and urls
 router = routers.DefaultRouter()
 router.register('users', views.UserViewSet)
 router.register('file', FileUploadViewSet, 'file')
@@ -19,7 +19,8 @@ router.register('photos', PhotoUploadView, 'photos')
 
 
 
-# Additionally, we include login URLs for the browsable API.
+# Ive added most of urls to this entry point, but there is room for improvement in
+# this area 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('proimage.com/', include('rest_auth.urls')),

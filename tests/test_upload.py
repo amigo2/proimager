@@ -19,30 +19,35 @@ from imager.models import Photo
 from imager_rest.viewsets import PhotoUploadView 
 from imager_rest.serializers import PhotoSerializer
 
+# Tested with Pytest
 
 class TestPhotoManager:
 
     def test_upload_creation(self, mocker):
+
+        # POST data to test
         expected_results = [
-            
             Photo(
                 pk = "10",
                 file = 'http://0.0.0.0:8000/media/images/photo-1.jpeg',
                 
                 ),
         ]
-        # django-mock-queries nos permite crear Mock QuerySets
-        # para omitir el acceso a BD
+        # Django Mock queries allow us to test db without creating db's entries
         qs = MockSet(expected_results[0])
 
+        # Creates data into model
         mocker.patch.object(Photo.objects, 'get_queryset', return_value=qs)
         result = list(Photo.objects.all())
 
+        #  return and check values
         assert result == expected_results
+        #  in this case is slightly biased as format a bit diff but wont afect the test result
         assert str(result[0]) == str('Photo object (10)')
 
 
 # Gives me error
+# reverse error ad urls and misscongigured, to be implemented
 # class TestViewSet:
 
 #     @pytest.mark.urls('imager.urls')
@@ -63,21 +68,26 @@ class TestPhotoManager:
 #         assert len(json.loads(response.content)) == 2
 
 
+
+#  Selializer test of view class
 class TestPhotoSerializer:
 
     def test_expected_serialized_json(self):
 
+        # data added to pass to serializer
         expected_results = {
             'pk': 1,
             'file': 'photo-1.jpeg',
         }
+
 
         photo = Photo(**expected_results)
         print('expected: ', expected_results)
 
         results = PhotoSerializer(photo).data
         
-        #When 
+        #This is bias the data to as media always appear in return
+        #  Needs implementation
         xp = {'pk': 1, 'file': '/media/photo-1.jpeg'}
 
         assert results == xp
